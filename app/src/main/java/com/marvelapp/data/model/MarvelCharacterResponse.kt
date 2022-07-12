@@ -15,13 +15,12 @@ data class CharacterDataResponse(
 data class CharacterItemResponse(
     val id: Long,
     val name: String?,
-    val description: String?,
-    val isFavourite: Boolean?,
-    val thumbnail: ThumbnailResponse,
-    val comics: CommonResponse?,
-    val series: CommonResponse?,
-    val stories: CommonResponse?,
-    val events: CommonResponse
+    val description: String?=null,
+    val thumbnail: ThumbnailResponse?=null,
+    val comics: CommonResponse?=null,
+    val series: CommonResponse?=null,
+    val stories: CommonResponse?=null,
+    val events: CommonResponse?=null
 )
 
 data class CommonResponse(

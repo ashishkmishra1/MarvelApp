@@ -4,7 +4,6 @@ data class CharacterItem(
     val id: Long,
     val name: String = "",
     val description: String = "",
-    val isFavourite: Boolean = false,
     val thumbnail: Thumbnail? = null,
     val comics: Comics? = null,
     val series: Series? = null,

@@ -9,12 +9,11 @@ class MarvelCharacterItemMapper : DomainMapper<CharacterItemResponse, CharacterI
         id = from.id,
         name = from.name ?: "",
         description = from.description ?: "",
-        isFavourite = from.isFavourite ?: false,
-        thumbnail = from.thumbnail.let { ThumbnailMapper().toDomain(it) },
+        thumbnail = from.thumbnail?.let { ThumbnailMapper().toDomain(it) },
         comics = from.comics?.let { ComicsMapper().toDomain(it) },
         series = from.series?.let { SeriesMapper().toDomain(it) },
         stories = from.stories?.let { StoriesMapper().toDomain(it) },
-        events = from.events.let { EventMapper().toDomain(it) },
+        events = from.events?.let { EventMapper().toDomain(it) },
 
 
         )
