@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">MarvelApp</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+
+    <string name="no_character_found_title">Character not found</string>
+    <string name="no_charcter_found_subtitle">Please try again</string>
+    <string name="description">Description</string>
+    <string name="title_comics">Comics</string>
+    <string name="comics_empty_message">Comics not found</string>
+    <string name="title_marvel">Character</string>
+    <string name="title_character_details">Character Fetails</string>
+    <string name="title_ok">Ok</string>
+    <string name="title_error_message">Something went wrong</string>
+    <string name="stories_available">Stories available: %d</string>
+    <string name="series_available">Series available: %d</string>
+    <string name="comics_available">Comics available: %d</string>
+    <string name="event_available">Events available: %d</string>
+
+
+
+
+</resources>
