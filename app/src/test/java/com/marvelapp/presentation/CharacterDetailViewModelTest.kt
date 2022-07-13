@@ -3,7 +3,7 @@ package com.marvelapp.presentation
 import androidx.lifecycle.Observer
 import com.marvelapp.domain.model.CharacterItem
 import com.marvelapp.domain.model.Item
-import com.marvelapp.domain.usecases.GetMarvelCharacterDetailsUseCase
+import com.marvelapp.domain.usecase.GetMarvelCharacterDetailsUseCase
 import com.marvelapp.presentation.characterdetails.CharacterDetailViewModel
 import com.marvelapp.testdata.TestData
 import io.mockk.coEvery

@@ -1,28 +1,27 @@
 package com.marvelapp.presentation.character
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.marvelapp.databinding.FragmentMarvelCharacterBinding
 import com.marvelapp.domain.model.CharacterItem
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-const val SHOW_LOADING = 1
-const val SHOW_DATA = 0
-const val SHOW_ERROR = 2
 
 class MarvelCharacterFragment : Fragment() {
+    companion object {
+        private const val SHOW_LOADING = 1
+        private const val SHOW_DATA = 0
+        private const val SHOW_ERROR = 2
+    }
 
     private val marvelViewModel: MarvelCharacterViewModel by viewModel()
     private lateinit var binding: FragmentMarvelCharacterBinding
-
     private val adapter = MarvelCharacterAdapter(onClickItem = ::onClickMarvelCharacter)
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -63,14 +62,8 @@ class MarvelCharacterFragment : Fragment() {
     }
 
     private fun setUpRecyclerView() {
-        with(binding) {
-            val layoutManager = GridLayoutManager(context, 2)
-            rvCharacters.layoutManager = layoutManager
-            rvCharacters.adapter = adapter
-        }
+        binding.characterAdapter = adapter
         setUpScrollListener()
-
-
     }
 
     private fun toggleViewState(viewPosition: Int) {

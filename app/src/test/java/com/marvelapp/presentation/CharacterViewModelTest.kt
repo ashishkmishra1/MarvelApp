@@ -2,7 +2,7 @@ package com.marvelapp.presentation
 
 import androidx.lifecycle.Observer
 import com.marvelapp.domain.model.CharacterItem
-import com.marvelapp.domain.usecases.GetMarvelCharacterUseCase
+import com.marvelapp.domain.usecase.GetMarvelCharacterUseCase
 import com.marvelapp.presentation.character.MarvelCharacterViewModel
 import com.marvelapp.testdata.TestData.MARVEL_CHARACTER_DATA
 import com.marvelapp.testdata.TestData.MARVEL_CHARACTER_ITEM

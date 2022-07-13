@@ -32,7 +32,7 @@
         android:id="@+id/tv_error_subtitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/no_charcter_found_subtitle"
+        android:text="@string/no_character_found_subtitle"
         android:textSize="@dimen/title_text_size"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

@@ -15,8 +15,6 @@ fun Context.showAlertDialog(
         .setMessage(errorMessage)
         .setPositiveButton(getString(R.string.title_ok), listener)
         .create()
-
     dialog.show()
-
     dialog.getButton(AlertDialog.BUTTON_POSITIVE)
 }
