@@ -1,11 +1,10 @@
-package com.marvelapp.data
-
+package com.marvelapp.domain.data
 import com.marvelapp.data.mapper.MarvelCharacterItemMapper
 import com.marvelapp.data.mapper.MarvelCharacterMapper
 import com.marvelapp.data.remote.MarvelApi
 import com.marvelapp.data.repository.MarvelCharacterRepositoryImpl
 import com.marvelapp.domain.repository.MarvelCharacterRepository
-import com.marvelapp.testdata.TestData.MARVEL_CHARACTER_RESPONSE_LIST
+import com.marvelapp.domain.testdata.TestData.MARVEL_CHARACTER_RESPONSE_LIST
 import io.mockk.coEvery
 import io.mockk.mockk
 import kotlinx.coroutines.runBlocking

@@ -27,7 +27,6 @@ class MarvelCharacterFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         marvelViewModel.fetchMarvelCharacter()
-
     }
 
     override fun onCreateView(
@@ -38,7 +37,6 @@ class MarvelCharacterFragment : Fragment() {
         binding = FragmentMarvelCharacterBinding.inflate(inflater)
         return binding.root
     }
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -58,7 +56,6 @@ class MarvelCharacterFragment : Fragment() {
             toggleViewState(SHOW_ERROR)
             binding.srlMarvelCharacters.isRefreshing = false
         }
-
     }
 
     private fun setUpRecyclerView() {
@@ -93,7 +90,6 @@ class MarvelCharacterFragment : Fragment() {
                         }
                     }
                 }
-
             }
         binding.rvCharacters.removeOnScrollListener(scrollListener)
         binding.rvCharacters.addOnScrollListener(scrollListener)
@@ -106,6 +102,4 @@ class MarvelCharacterFragment : Fragment() {
             )
         )
     }
-
-
 }

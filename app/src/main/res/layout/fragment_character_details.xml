@@ -2,6 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="characterDetailsViewModel"
             type="com.marvelapp.presentation.characterdetails.CharacterDetailViewModel" />
@@ -11,6 +12,7 @@
 
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/gray"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -30,7 +32,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:loadImage="@{characterDetailsViewModel.image}" />
-
 
             <TextView
                 android:id="@+id/tv_character_name"
