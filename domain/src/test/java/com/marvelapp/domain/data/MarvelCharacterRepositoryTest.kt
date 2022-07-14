@@ -1,6 +1,5 @@
 package com.marvelapp.domain.data
-import com.marvelapp.data.mapper.MarvelCharacterItemMapper
-import com.marvelapp.data.mapper.MarvelCharacterMapper
+import com.marvelapp.data.mapper.MarvelCharacterItemResponseMapperImpl
 import com.marvelapp.data.remote.MarvelApi
 import com.marvelapp.data.repository.MarvelCharacterRepositoryImpl
 import com.marvelapp.domain.repository.MarvelCharacterRepository
@@ -14,8 +13,7 @@ import org.junit.Test
 class MarvelCharacterRepositoryTest {
 
     private val marvelAPiService: MarvelApi = mockk()
-    private val mapperMarvelCharacterData = MarvelCharacterMapper()
-    private val mapperMarvelCharacterItem = MarvelCharacterItemMapper()
+    private val mapperImpl = MarvelCharacterItemResponseMapperImpl()
     private lateinit var characterRepository: MarvelCharacterRepository
 
     @Before
@@ -26,8 +24,7 @@ class MarvelCharacterRepositoryTest {
 
     private fun initialiseRepository() = MarvelCharacterRepositoryImpl(
         marvelAPiService,
-        mapperMarvelCharacterData,
-        mapperMarvelCharacterItem
+        mapperImpl,
     )
 
     @Test
@@ -47,7 +44,7 @@ class MarvelCharacterRepositoryTest {
 
             //Then
             val expected = response.result.first() ==
-                    mapperMarvelCharacterItem.toDomain(MARVEL_CHARACTER_RESPONSE_LIST.data.results.first()) &&
+                    mapperImpl.toMarvelCharacterItem(MARVEL_CHARACTER_RESPONSE_LIST.data.results.first()) &&
                     response.result.size == 1
             assert(expected)
         }
