@@ -20,36 +20,36 @@ class MarvelCharacterItemResponseMapperImpl :MarvelCharacterItemResponseMapper {
         events = from.events?.let { toMarvelEvents(it) },
     )
 
-    override fun toThumbnail(from: ThumbnailResponse) =Thumbnail(
+    private fun toThumbnail(from: ThumbnailResponse) =Thumbnail(
         extension = from.extension ?: "",
         path = from.path ?: ""
     )
 
-    override fun toMarvelComics(from: CommonResponse)= Comics(
+    private fun toMarvelComics(from: CommonResponse)= Comics(
         available = from.available ?: "",
         collectionURI = from.collectionURI,
         items = from.items.let { it -> it.map { toItem(it) } }
     )
 
-    override fun toMarvelSeries(from: CommonResponse) = Series(
+    private fun toMarvelSeries(from: CommonResponse) = Series(
         available = from.available ?: "",
         collectionURI = from.collectionURI,
         items = from.items.let { it -> it.map { toItem(it) } }
     )
 
-    override fun toMarvelEvents(from: CommonResponse) = Events(
+    private fun toMarvelEvents(from: CommonResponse) = Events(
         available = from.available ?: "",
         collectionURI = from.collectionURI,
         items = from.items.let { it -> it.map { toItem(it) } }
     )
 
-    override fun toMarvelStories(from: CommonResponse)=  Stories(
+    private fun toMarvelStories(from: CommonResponse)=  Stories(
         available = from.available ?: "",
         collectionURI = from.collectionURI,
         items = from.items.let { it -> it.map { toItem(it) } }
     )
 
-    override fun toItem(from: ItemResponse) = Item(
+    private fun toItem(from: ItemResponse) = Item(
         name = from.name ?: "",
         resourceURI = from.resourceUri ?: ""
     )

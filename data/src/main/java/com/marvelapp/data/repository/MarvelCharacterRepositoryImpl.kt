@@ -18,7 +18,6 @@ class MarvelCharacterRepositoryImpl(
         marvelCharacterItemResponseMapperImpl.toMarvelCharacterData(api.getMarvelCharacters(limit, offset).data)
     }
 
-
     override suspend fun getMarvelCharacterDetails(id: Long) = withContext(Dispatchers.IO) {
         val marvelDetails = api.getMarvelCharacterDetails(id)
         marvelDetails.data.results.firstOrNull()?.let {
