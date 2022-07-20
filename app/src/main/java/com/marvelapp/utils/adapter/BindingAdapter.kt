@@ -1,4 +1,4 @@
-package com.marvelapp.utils
+package com.marvelapp.utils.adapter
 
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
@@ -6,7 +6,6 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.request.RequestOptions
 import com.marvelapp.R
-
 
 @BindingAdapter("loadImage")
 fun loadImage(view: ImageView, imageUrl: String?) {

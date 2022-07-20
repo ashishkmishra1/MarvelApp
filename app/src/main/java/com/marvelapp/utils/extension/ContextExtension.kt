@@ -1,4 +1,4 @@
-package com.marvelapp.utils
+package com.marvelapp.utils.extension
 
 import android.app.AlertDialog
 import android.content.Context

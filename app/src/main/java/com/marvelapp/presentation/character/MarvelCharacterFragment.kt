@@ -9,7 +9,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.marvelapp.databinding.FragmentMarvelCharacterBinding
-import com.marvelapp.domain.model.CharacterItem
+import com.marvelapp.domain.model.CharacterModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -67,7 +67,7 @@ class MarvelCharacterFragment : Fragment() {
         binding.vfMarvelCharacter.displayedChild = viewPosition
     }
 
-    private fun onLoadCharacterList(list: List<CharacterItem>) {
+    private fun onLoadCharacterList(list: List<CharacterModel>) {
         with(binding) {
             toggleViewState(SHOW_DATA)
             adapter.updateMarvelItems(list)

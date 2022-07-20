@@ -1,8 +1,8 @@
 package com.marvelapp.data.repository
 
+import com.marvelapp.data.datasource.Source
 import com.marvelapp.data.mapper.MarvelCharacterItemResponseMapperImpl
-import com.marvelapp.data.remote.MarvelApi
-import com.marvelapp.domain.testdata.TestData
+import com.marvelapp.data.testdata.TestData
 import io.mockk.coEvery
 import io.mockk.mockk
 import kotlinx.coroutines.runBlocking
@@ -11,8 +11,8 @@ import org.junit.Test
 
 class MarvelCharacterRepositoryImplTest {
     private lateinit var characterRepositoryImpl: MarvelCharacterRepositoryImpl
-    private val marvelAPiService: MarvelApi = mockk()
     private val mapperImpl = MarvelCharacterItemResponseMapperImpl()
+    private val source: Source = mockk()
 
     @Before
     fun setUpTest() {
@@ -21,7 +21,7 @@ class MarvelCharacterRepositoryImplTest {
     }
 
     private fun initialiseRepository() = MarvelCharacterRepositoryImpl(
-        marvelAPiService,
+        source,
         mapperImpl,
     )
 
@@ -30,7 +30,7 @@ class MarvelCharacterRepositoryImplTest {
         runBlocking {
             //Given
             coEvery {
-                marvelAPiService.getMarvelCharacters(
+                source.fetchMarvelCharacter(
                     20,
                     0
                 )
@@ -41,7 +41,7 @@ class MarvelCharacterRepositoryImplTest {
 
             //Then
             val expected = response.result.first() ==
-                    mapperImpl.toMarvelCharacterItem(TestData.MARVEL_CHARACTER_RESPONSE_LIST.data.results.first()) &&
+                    mapperImpl.toMarvelCharacterModel(TestData.MARVEL_CHARACTER_RESPONSE_LIST.data.results.first()) &&
                     response.result.size == 1
             assert(expected)
         }
@@ -52,7 +52,7 @@ class MarvelCharacterRepositoryImplTest {
         runBlocking {
             //Given
             val exception = Exception("Marvel character not found")
-            coEvery { marvelAPiService.getMarvelCharacters(20, 0) } throws exception
+            coEvery { source.fetchMarvelCharacter(20, 0) } throws exception
 
             // When & Then
             runCatching { characterRepositoryImpl.getMarvelCharacters(20, 0) }
@@ -66,7 +66,7 @@ class MarvelCharacterRepositoryImplTest {
     fun `Given character id When fetch character details Then verify character`() = runBlocking {
         //Given
         val id: Long = 1011334
-        coEvery { marvelAPiService.getMarvelCharacterDetails(id) } returns TestData.MARVEL_CHARACTER_RESPONSE_LIST
+        coEvery { source.fetchCharacterDetails(id) } returns TestData.MARVEL_CHARACTER_RESPONSE_LIST
 
         //When
         val response = characterRepositoryImpl.getMarvelCharacterDetails(id)
@@ -84,7 +84,7 @@ class MarvelCharacterRepositoryImplTest {
             //Given
             val exception = Exception("Marvel character details not found")
             val id: Long = 1011334
-            coEvery { marvelAPiService.getMarvelCharacterDetails(id) } throws exception
+            coEvery { source.fetchCharacterDetails(id) } throws exception
 
             //When & Then
             runCatching {

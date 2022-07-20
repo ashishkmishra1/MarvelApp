@@ -3,18 +3,18 @@ package com.marvelapp.presentation.characterdetails
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.marvelapp.domain.model.CharacterItem
-import com.marvelapp.domain.model.Item
+import com.marvelapp.domain.model.CharacterModel
+import com.marvelapp.domain.model.ResourceItemModel
 import com.marvelapp.domain.usecase.GetMarvelCharacterDetailsUseCase
 import com.marvelapp.presentation.base.BaseViewModel
 import kotlinx.coroutines.launch
 
 class CharacterDetailViewModel(val useCase: GetMarvelCharacterDetailsUseCase) : BaseViewModel() {
-    private val characterItemMLD: MutableLiveData<CharacterItem> = MutableLiveData()
-    val data: LiveData<CharacterItem> = characterItemMLD
+    private val characterItemMLD: MutableLiveData<CharacterModel> = MutableLiveData()
+    val data: LiveData<CharacterModel> = characterItemMLD
 
-    private val comicsItemList: MutableLiveData<List<Item>> = MutableLiveData()
-    val comics: LiveData<List<Item>> = comicsItemList
+    private val comicsItemList: MutableLiveData<List<ResourceItemModel>> = MutableLiveData()
+    val comics: LiveData<List<ResourceItemModel>> = comicsItemList
 
     private val characterName: MutableLiveData<String> = MutableLiveData()
     val name: LiveData<String> = characterName
@@ -45,18 +45,18 @@ class CharacterDetailViewModel(val useCase: GetMarvelCharacterDetailsUseCase) : 
         }
     }
 
-    private fun updateCharacterData(characterItem: CharacterItem?) {
+    private fun updateCharacterData(characterItem: CharacterModel?) {
         characterItem?.let {
-            it.comics?.items?.let {
+            it.comicsModel?.items?.let {
                 comicsItemList.value = it
             }
             characterImage.value = it.getImageUrl()
             characterDescription.value = it.description
             characterName.value = it.name
-            characterStoriesCount.value = it.stories?.items?.size ?: 0
+            characterStoriesCount.value = it.storiesModel?.items?.size ?: 0
             characterEventCount.value = it.events?.items?.size ?: 0
-            characterSeriesCount.value = it.series?.items?.size ?: 0
-            characterComicsCount.value = it.comics?.items?.size ?: 0
+            characterSeriesCount.value = it.seriesModel?.items?.size ?: 0
+            characterComicsCount.value = it.comicsModel?.items?.size ?: 0
         }
     }
 

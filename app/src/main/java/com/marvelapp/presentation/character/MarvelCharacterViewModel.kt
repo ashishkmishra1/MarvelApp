@@ -2,8 +2,8 @@ package com.marvelapp.presentation.character
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.marvelapp.domain.model.CharacterItem
-import com.marvelapp.domain.model.MarvelCharacterData
+import com.marvelapp.domain.model.CharacterDetailsModel
+import com.marvelapp.domain.model.CharacterModel
 import com.marvelapp.domain.usecase.GetMarvelCharacterUseCase
 import com.marvelapp.presentation.base.BaseViewModel
 
@@ -17,15 +17,15 @@ class MarvelCharacterViewModel(private val useCase: GetMarvelCharacterUseCase) :
     private val emptyResultStatus: MutableLiveData<Boolean> = MutableLiveData()
     val emptyResult: MutableLiveData<Boolean> = emptyResultStatus
 
-    private val marvelCharacters: MutableLiveData<List<CharacterItem>> = MutableLiveData()
-    val character: LiveData<List<CharacterItem>> = marvelCharacters
+    private val marvelCharacters: MutableLiveData<List<CharacterModel>> = MutableLiveData()
+    val character: LiveData<List<CharacterModel>> = marvelCharacters
 
     private var currentPageCounter = 0
 
 
     fun fetchMarvelCharacter() {
         launch {
-            val response: MarvelCharacterData =
+            val response: CharacterDetailsModel =
                 useCase.invoke(ITEM_COUNT_PER_PAGE, currentPageCounter)
             marvelCharacters.postValue(response.result)
         }
@@ -35,7 +35,7 @@ class MarvelCharacterViewModel(private val useCase: GetMarvelCharacterUseCase) :
         launch(true) {
             currentPageCounter += ITEM_COUNT_PER_PAGE
 
-            val response: MarvelCharacterData =
+            val response: CharacterDetailsModel =
                 useCase.invoke(ITEM_COUNT_PER_PAGE, currentPageCounter)
 
             val shouldLoadMoreData = currentPageCounter / ITEM_COUNT_PER_PAGE < response.total

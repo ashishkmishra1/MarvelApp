@@ -1,4 +1,4 @@
-package com.marvelapp.utils
+package com.marvelapp.utils.extension
 
 import android.widget.ImageView
 import androidx.annotation.DrawableRes

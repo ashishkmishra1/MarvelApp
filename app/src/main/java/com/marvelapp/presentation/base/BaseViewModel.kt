@@ -12,7 +12,7 @@ abstract class BaseViewModel : ViewModel() {
 
     private val errorStatus = MutableLiveData<Boolean>()
     val error: LiveData<Boolean> = errorStatus
-    
+
     fun launch(disableLoading: Boolean = false, block: suspend () -> Unit) {
         if (disableLoading.not()) loadingStatus.postValue(true)
 

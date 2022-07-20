@@ -9,13 +9,13 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.marvelapp.R
 import com.marvelapp.databinding.FragmentCharacterDetailsBinding
-import com.marvelapp.utils.showAlertDialog
+import com.marvelapp.utils.extension.showAlertDialog
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class CharacterDetailsFragment : Fragment() {
     private val viewModel: CharacterDetailViewModel by viewModel()
     private lateinit var binding: FragmentCharacterDetailsBinding
-    val args: CharacterDetailsFragmentArgs by navArgs()
+    private val args: CharacterDetailsFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater,

@@ -8,5 +8,4 @@ import org.koin.dsl.module
 val presentationModule = module {
     viewModel { MarvelCharacterViewModel(get()) }
     viewModel { CharacterDetailViewModel(get()) }
-
 }

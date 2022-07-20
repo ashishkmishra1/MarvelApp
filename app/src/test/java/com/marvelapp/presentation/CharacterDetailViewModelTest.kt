@@ -1,8 +1,8 @@
 package com.marvelapp.presentation
 
 import androidx.lifecycle.Observer
-import com.marvelapp.domain.model.CharacterItem
-import com.marvelapp.domain.model.Item
+import com.marvelapp.domain.model.CharacterModel
+import com.marvelapp.domain.model.ResourceItemModel
 import com.marvelapp.domain.usecase.GetMarvelCharacterDetailsUseCase
 import com.marvelapp.presentation.characterdetails.CharacterDetailViewModel
 import com.marvelapp.testdata.TestData
@@ -15,8 +15,8 @@ import org.junit.Test
 class CharacterDetailViewModelTest : BaseViewModelTest() {
     private val useCase = mockk<GetMarvelCharacterDetailsUseCase>()
 
-    private val dataLiveDataObserver = mockk<Observer<CharacterItem>>(relaxed = true)
-    private val comicsLiveDataObserver = mockk<Observer<List<Item>>>(relaxed = true)
+    private val dataLiveDataObserver = mockk<Observer<CharacterModel>>(relaxed = true)
+    private val comicsLiveDataObserver = mockk<Observer<List<ResourceItemModel>>>(relaxed = true)
     private val errorLiveDataObserver = mockk<Observer<Boolean>>(relaxed = true)
     private val loadingLiveDataObserver = mockk<Observer<Boolean>>(relaxed = true)
 

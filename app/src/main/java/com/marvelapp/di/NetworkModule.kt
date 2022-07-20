@@ -21,7 +21,6 @@ val networkModule = module {
     single { createOkHttpClient() }
 
 }
-
 private fun getMoshi(): Moshi = Moshi.Builder().add(KotlinJsonAdapterFactory()).build()
 
 fun createDefaultParameters(chain: Interceptor.Chain): Response {

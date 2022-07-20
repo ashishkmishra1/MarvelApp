@@ -1,11 +1,11 @@
 package com.marvelapp.data.mapper
 
-import com.marvelapp.domain.testdata.TestData.MARVEL_CHARACTER_RESPONSE_LIST
+import com.marvelapp.data.testdata.TestData.MARVEL_CHARACTER_RESPONSE_LIST
 import kotlinx.coroutines.runBlocking
 import org.junit.Test
 import kotlin.test.assertEquals
 
-class MarvelCharacterItemResponseMapperImplTest {
+class MarvelCharacterEntityMapperImplTest {
     private val mapperImpl = MarvelCharacterItemResponseMapperImpl()
 
     @Test
@@ -13,7 +13,7 @@ class MarvelCharacterItemResponseMapperImplTest {
         runBlocking {
             assertEquals(
                 MARVEL_CHARACTER_RESPONSE_LIST.data.results[0].name,
-                mapperImpl.toMarvelCharacterItem(
+                mapperImpl.toMarvelCharacterModel(
                     MARVEL_CHARACTER_RESPONSE_LIST.data.results[0]
                 ).name
             )
@@ -25,7 +25,7 @@ class MarvelCharacterItemResponseMapperImplTest {
         runBlocking {
             assertEquals(
                 MARVEL_CHARACTER_RESPONSE_LIST.data.results.size,
-                mapperImpl.toMarvelCharacterData(MARVEL_CHARACTER_RESPONSE_LIST.data).result.size
+                mapperImpl.toMarvelCharacterDetailsModel(MARVEL_CHARACTER_RESPONSE_LIST.data).result.size
             )
         }
     }

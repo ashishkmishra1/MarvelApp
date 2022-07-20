@@ -1,16 +1,16 @@
 package com.marvelapp.domain.testdata
 
-import com.marvelapp.data.model.CharacterDataResponse
-import com.marvelapp.data.model.CharacterItemResponse
-import com.marvelapp.data.model.MarvelCharacterResponse
-import com.marvelapp.domain.model.CharacterItem
-import com.marvelapp.domain.model.MarvelCharacterData
+import com.marvelapp.data.model.CharacterDetailsEntity
+import com.marvelapp.data.model.CharacterEntity
+import com.marvelapp.data.model.MarvelCharacterEntity
+import com.marvelapp.domain.model.CharacterModel
+import com.marvelapp.domain.model.CharacterDetailsModel
 object TestData {
 
-    val MARVEL_CHARACTER_RESPONSE_LIST = MarvelCharacterResponse(
-        CharacterDataResponse(
+    val MARVEL_CHARACTER_RESPONSE_LIST = MarvelCharacterEntity(
+        CharacterDetailsEntity(
             listOf(
-                CharacterItemResponse(
+                CharacterEntity(
                     id = 1011334,
                     name = "3-D Man"
                 )
@@ -18,12 +18,18 @@ object TestData {
         )
     )
 
-    val MARVEL_CHARACTER_ITEM = CharacterItem(
+    val MARVEL_CHARACTER_ITEM = CharacterModel(
         id = 1011334,
-        name = "3-D Man"
+        name = "3-D Man",
+        "",
+        null,
+        null,
+        null,
+        null,
+        null
     )
 
-    val MARVEL_CHARACTER_DATA = MarvelCharacterData(
+    val MARVEL_CHARACTER_DATA = CharacterDetailsModel(
         result = listOf(MARVEL_CHARACTER_ITEM),
         total = 20
     )
