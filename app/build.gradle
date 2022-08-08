@@ -17,8 +17,8 @@ android {
         versionCode 1
         versionName "1.0"
         buildConfigField 'String', 'BASE_URL', '"https://gateway.marvel.com/"'
-        buildConfigField 'String', 'PRIVATE_API_KEY', '"78b1fe9ab8e7682ca0d387e5191207dcfb2554a0"'
-        buildConfigField 'String',  'PUBLIC_API_KEY', '"216cab5ff33aa3a38eb4f3053c2158d7"'
+        buildConfigField 'String', 'PRIVATE_API_KEY', '"PRIVATE_API_KEY"'
+        buildConfigField 'String',  'PUBLIC_API_KEY', '"PUBLIC_API_KEY"'
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
